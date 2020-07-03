@@ -11,14 +11,12 @@
 
 <script>
 export default {
-  name: "Home_Banner"
+  name: "Home_Banner",
 };
 </script>
 
 <style lang="scss" scoped>
-
 #Home_Banner {
-  height: 250px;
   background-color: #e9ecef;
   margin-bottom: 50px;
   padding: 1rem 0;
@@ -41,15 +39,5 @@ export default {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-}
-@media (min-width: 200px) {
-  #Home_Banner {
-    height: 350px;
-  }
-}
-@media (min-width: 461px) {
-  #Home_Banner {
-    height: 290px;
-  }
 }
 </style>

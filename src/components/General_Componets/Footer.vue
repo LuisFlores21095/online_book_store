@@ -1,7 +1,7 @@
 <template>
-  <v-footer dark padless>
+  <v-footer  dark padless>
     <v-card class="flex" flat tile elevation="1">
-      <v-card-title id="Footer" class="bgGrey">
+      <v-card-title id="footer_text" class="bgGrey">
         <div class="subheading" >Get connected with me on social networks!</div>
 
         <v-spacer></v-spacer>
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#Footer {
+#footer_text {
   color: #41b883;
 }
 </style>

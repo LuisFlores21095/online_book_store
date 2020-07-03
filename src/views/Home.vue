@@ -6,6 +6,8 @@
     <HomeBookDisplay />
     <HomeDisplayNameSlider :leftText="secondLT" :rightText="firstRT" />
     <HomeBookDisplay />
+    <HomeDisplayNameSlider :leftText="thirdLT" :rightText="thirdRT" />
+    <HomeGenresDisplay />
     <Footer/>
   </div>
 </template>
@@ -17,6 +19,7 @@ import HomeBanner from "@/components/Home_Componets/Home_Banner.vue";
 import HomeDisplayNameSlider from "@/components/Home_Componets/Home_DisplayName_Slide.vue";
 import HomeBookDisplay from "@/components/Home_Componets/Home_Book_Display.vue";
 import Footer from "@/components/General_Componets/Footer.vue";
+import HomeGenresDisplay from "@/components/Home_Componets/Home_Genres_Display.vue";
 
 export default {
   name: "Home",
@@ -25,6 +28,7 @@ export default {
     HomeBanner,
     HomeDisplayNameSlider,
     HomeBookDisplay,
+    HomeGenresDisplay,
     Footer
   },
   data() {
@@ -32,9 +36,13 @@ export default {
       firstLT: "Best Sellers",
       firstRT: "Show All Books",
       secondLT: "Top Rated",
+      thirdLT : "Genres",
+      thirdRT : "Show All Genres"
     };
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
