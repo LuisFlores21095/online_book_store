@@ -23,9 +23,9 @@ export default {
     return {
       firstLT: "Best Sellers",
       firstRT: "Show All Books",
-      secondLT: "Top Rated",
+      secondLT: "Top Rated"
     };
-  },
+  }
 };
 </script>
 

@@ -45,7 +45,7 @@
 </template>
 <script>
 export default {
-  name: "Book",
+  name: "Book"
 };
 </script>
 
@@ -73,7 +73,6 @@ export default {
   width: 100%;
   padding: 0;
 }
-
 
 .book_contain {
   display: block;

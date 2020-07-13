@@ -55,11 +55,11 @@ export default {
   name: "Home_DisplayName_Slide",
   props: {
     leftText: String,
-    rightText: String,
+    rightText: String
   },
   data() {
     return {};
-  },
+  }
 };
 </script>
 >

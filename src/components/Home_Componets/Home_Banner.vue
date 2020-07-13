@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "Home_Banner",
+  name: "Home_Banner"
 };
 </script>
 

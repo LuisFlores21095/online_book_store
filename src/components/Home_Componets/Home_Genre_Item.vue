@@ -15,7 +15,7 @@
 </template>
 <script>
 export default {
-  name: "Genre",
+  name: "Genre"
 };
 </script>
 

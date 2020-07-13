@@ -16,8 +16,8 @@ import Book from "@/components/Book_Items/Book.vue";
 export default {
   name: "Home_Book_Display",
   components: {
-    Book,
-  },
+    Book
+  }
 };
 </script>
 <style lang="scss" scoped>

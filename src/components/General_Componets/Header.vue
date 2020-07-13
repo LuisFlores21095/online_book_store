@@ -15,7 +15,52 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn to="/login" icon color="vueGreen" class="d-none d-md-flex">
+    <v-menu v-if="userCheck" :close-on-content-click="false" offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          text
+          color="vueGreen"
+          class="d-none d-md-flex"
+          v-bind="attrs"
+          v-on="on"
+        >
+          <span class="material-icons">person </span>
+        </v-btn>
+      </template>
+      <v-card>
+        <v-list>
+          <v-list-item>
+            <v-list-item-avatar>
+              <span style="font-size: 40px;" class="material-icons"
+                >account_circle
+              </span>
+            </v-list-item-avatar>
+
+            <v-list-item-content>
+              <v-list-item-title
+                >{{ userCheck.firstName
+                }}{{ userCheck.lastName }}</v-list-item-title
+              >
+              <v-list-item-subtitle>{{ userCheck.email }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+
+        <v-divider></v-divider>
+
+        <v-card-actions class="justify-center">
+          <v-btn block text color="primary"  @click="signOut">Sign Out</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-menu>
+
+    <v-btn
+      to="/login"
+      v-if="userCheck == null"
+      icon
+      color="vueGreen"
+      class="d-none d-md-flex"
+    >
       <span class="material-icons">login </span>
     </v-btn>
 
@@ -46,6 +91,8 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "Header",
   data: () => ({
@@ -56,13 +103,31 @@ export default {
       { id: 4, name: "Contact", route: `/contact` },
     ],
     tabItemsMap: { "/": 0, "/books": 1, "/contacts": 2, "/about": 3 },
-    items: ["temp"],
     currentRoute: String,
     active_tab: "",
+    items: [
+      { title: "Click Me" },
+      { title: "Click Me" },
+      { title: "Click Me" },
+      { title: "Click Me 2" },
+    ],
   }),
   mounted: function() {
     this.active_tab = this.tabItemsMap[this.$route.path];
   },
+  computed: {
+    ...mapGetters(["userCheck"]),
+  },
+  methods:{
+    ...mapMutations(["clearUser"]),
+
+   signOut(){
+     this.clearUser();
+     this.$router.push('/login');
+
+   }
+   
+  }
 };
 </script>
 
@@ -72,7 +137,15 @@ export default {
   font-weight: bold;
   color: #35a573;
 }
+#Header {
+  .v-btn:not(.v-btn--round).v-size--default {
+    padding: 0;
+  }
 
+  .material-icons{
+    font-size: 27px;
+  }
+}
 #Vue_header_logo {
   width: 200px;
   padding-left: 0px;

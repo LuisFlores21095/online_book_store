@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="2" id="LogIn">
-    <v-card-title id="SignInTitle" class="vueGreen--text justify-center" >
+    <v-card-title id="SignInTitle" class="vueGreen--text justify-center">
       Sign In
     </v-card-title>
     <v-container class="px-9">
@@ -31,7 +31,7 @@
           </v-col>
 
           <v-col cols="12" v-show="LoginPopup === 1">
-            <v-alert dense outlined type="error" >
+            <v-alert dense outlined type="error">
               {{ LoginPopupMessage }}
             </v-alert>
           </v-col>
@@ -44,15 +44,17 @@
               color="vueGreen"
               class="mr-4"
               @click="loginvalidate"
-              :dark="valid" 
+              :dark="valid"
             >
               Login
             </v-btn>
           </v-col>
         </v-row>
-        <div id="Login_RD_text"
-          >Don't have an account?
-          <router-link to="/register" id='Login_SignUp_link'>Sign Up</router-link>
+        <div id="Login_RD_text">
+          Don't have an account?
+          <router-link to="/register" id="Login_SignUp_link"
+            >Sign Up</router-link
+          >
         </div>
       </v-form>
     </v-container>
@@ -60,6 +62,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import {mapGetters, mapMutations} from 'vuex';
 export default {
   data: () => ({
     dialog: true,
@@ -90,7 +94,7 @@ export default {
     },
   }),
   computed: {
-    // ...mapGetters(["tokenCheck"]),
+    ...mapGetters(["userCheck"]),
 
     passwordMatch() {
       return () => this.password === this.cpassword || "Password must match";
@@ -103,48 +107,48 @@ export default {
   },
 
   methods: {
-    // ...mapMutations(["LOGIN_SUCCESS"]),
+    ...mapMutations(["LOGIN_SUCCESS"]),
 
     loginvalidate() {
-      //       if (this.$refs.loginForm.validate()) {
-      //         this.loadingLogin = true;
-      //         axios
-      //           .post("http://localhost:3000/login", {
-      //             email: this.loginEmail,
-      //             password: this.loginPassword
-      //           })
-      //           .then(response => {
-      //             this.l_reset();
-      //             console.log(response.data.token);
-      //             this.LOGIN_SUCCESS(response.data.token);
-      //             this.snackbar = true;
-      //             this.dialog = false;
-      //             this.loadingLogin = false;
-      //           })
-      //           .catch(error => {
-      //             console.log(error.response.data.message);
-      //             this.LoginPopupMessage = error.response.data.message;
-      //             this.LoginPopup = 1;
-      //             this.loadingLogin = false;
-      //           });
-      //       }
-      //     },
-      //     l_reset() {
-      //       this.$refs.loginForm.reset();
+      if (this.$refs.loginForm.validate()) {
+        this.loadingLogin = true;
+        axios
+          .post("http://18.223.28.96/login", {
+            email: this.loginEmail,
+            password: this.loginPassword,
+          })
+          .then((response) => {
+            this.l_reset();
+            this.LOGIN_SUCCESS(response.data);
+            this.snackbar = true;
+            this.dialog = false;
+            this.LoginPopup = 0;
+            this.loadingLogin = false;
+            this.$router.push('/');
+
+          })
+          .catch((error) => {
+            this.LoginPopupMessage = error.response.data.message;
+            this.LoginPopup = 1;
+            this.loadingLogin = false;
+          });
+      }
+    },
+    l_reset() {
+      this.$refs.loginForm.reset();
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-#Login_RD_text{
-    text-align: center;
-    margin: 20px 0;
+#Login_RD_text {
+  text-align: center;
+  margin: 20px 0;
 }
 
-#Login_SignUp_link{
-    padding-left: 6px;
-    
+#Login_SignUp_link {
+  padding-left: 6px;
 }
 #Login_SignUp_link:hover {
   text-decoration: underline;
@@ -153,11 +157,10 @@ export default {
 #SignInTitle {
   font-size: 35px;
   padding-top: 25px;
-  font-weight:bold;
+  font-weight: bold;
 }
 #LogIn {
   margin: 18vh 15px;
-
 }
 @media (min-width: 550px) {
   #LogIn {

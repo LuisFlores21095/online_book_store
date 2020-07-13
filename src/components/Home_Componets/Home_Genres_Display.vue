@@ -17,7 +17,7 @@ export default {
   name: "Home_Book_Display",
   components: {
     Genre
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

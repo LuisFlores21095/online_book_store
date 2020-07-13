@@ -1,8 +1,8 @@
 <template>
-  <v-footer  dark padless>
+  <v-footer dark padless>
     <v-card class="flex" flat tile elevation="1">
       <v-card-title id="footer_text" class="bgGrey">
-        <div class="subheading" >Get connected with me on social networks!</div>
+        <div class="subheading">Get connected with me on social networks!</div>
 
         <v-spacer></v-spacer>
 
@@ -19,9 +19,9 @@ export default {
   name: "Footer",
   data() {
     return {
-      icons: ["fab fa-facebook", "fab fa-google-plus", "fab fa-linkedin"],
+      icons: ["fab fa-facebook", "fab fa-google-plus", "fab fa-linkedin"]
     };
-  },
+  }
 };
 </script>
 

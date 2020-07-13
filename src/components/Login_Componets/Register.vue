@@ -129,9 +129,11 @@
             </v-btn>
           </v-col>
         </v-row>
-        <div id="Login_RD_text"
-          >Already have an account?
-          <router-link to="/login" id='Login_Register_link'>Sign In</router-link>
+        <div id="Login_RD_text">
+          Already have an account?
+          <router-link to="/login" id="Login_Register_link"
+            >Sign In</router-link
+          >
         </div>
       </v-form>
     </v-container>
@@ -139,7 +141,7 @@
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 // import { mapMutations } from "vuex";
 // import { mapGetters } from "vuex";
 
@@ -161,27 +163,27 @@ export default {
     timeout: 3000,
 
     emailRules: [
-      (v) => !!v || "Required",
-      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+      v => !!v || "Required",
+      v => /.+@.+\..+/.test(v) || "E-mail must be valid"
     ],
     zipCodeRules: [
-      (v) => !!v || "Required",
-      (v) => /^\d+$/.test(v) || "Zipcode contains only digits",
+      v => !!v || "Required",
+      v => /^\d+$/.test(v) || "Zipcode contains only digits"
     ],
 
     show1: false,
     password: "",
     rules: {
-      required: (value) => !!value || "Required.",
-      min: (v) => (v && v.length >= 8) || "Min 8 characters",
-    },
+      required: value => !!value || "Required.",
+      min: v => (v && v.length >= 8) || "Min 8 characters"
+    }
   }),
   computed: {
     // ...mapGetters(["tokenCheck"]),
 
     passwordMatch() {
       return () => this.password === this.cpassword || "Password must match";
-    },
+    }
   },
 
   methods: {
@@ -192,41 +194,41 @@ export default {
     },
 
     registervalidate() {
-      //   if (this.$refs.registerForm.validate()) {
-      //     this.loadingRegister = true;
-      //     axios
-      //       .post("http://localhost:3000/register", {
-      //         firstName: this.firstName,
-      //         lastName: this.lastName,
-      //         streetAddress: this.streetAddress,
-      //         city: this.city,
-      //         state: this.state,
-      //         zipCode: this.zipCode,
-      //         email: this.email,
-      //         password: this.password
-      //       })
-      //       .then(response => {
-      //         this.r_reset();
-      //         this.RegisterPopupMessage = response.data.message;
-      //         this.RegisterPopup = 2;
-      //         this.loadingRegister = false;
-      //       })
-      //       .catch(error => {
-      //         this.RegisterPopup = 1;
-      //         if (error.response.data.error.errorCode === 11000) {
-      //           this.RegisterPopupMessage = error.response.data.message;
-      //           this.emailErrorDup = true;
-      //         } else {
-      //           this.RegisterPopupMessage = error.response.data.message;
-      //         }
-      //         this.loadingRegister = false;
-      //       });
-      //   }
+        if (this.$refs.registerForm.validate()) {
+          this.loadingRegister = true;
+          axios
+            .post("http://18.223.28.96/register", {
+              firstName: this.firstName,
+              lastName: this.lastName,
+              streetAddress: this.streetAddress,
+              city: this.city,
+              state: this.state,
+              zipCode: this.zipCode,
+              email: this.email,
+              password: this.password
+            })
+            .then(response => {
+              this.r_reset();
+              this.RegisterPopupMessage = response.data.message;
+              this.RegisterPopup = 2;
+              this.loadingRegister = false;
+            })
+            .catch(error => {
+              this.RegisterPopup = 1;
+              if (error.response.data.error.errorCode === 11000) {
+                this.RegisterPopupMessage = error.response.data.message;
+                this.emailErrorDup = true;
+              } else {
+                this.RegisterPopupMessage = error.response.data.message;
+              }
+              this.loadingRegister = false;
+            });
+        }
     },
     r_reset() {
       this.$refs.registerForm.reset();
-    },
-  },
+    }
+  }
 };
 </script>
 

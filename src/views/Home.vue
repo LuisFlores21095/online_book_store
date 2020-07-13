@@ -8,7 +8,7 @@
     <HomeBookDisplay />
     <HomeDisplayNameSlider :leftText="thirdLT" :rightText="thirdRT" />
     <HomeGenresDisplay />
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -36,13 +36,11 @@ export default {
       firstLT: "Best Sellers",
       firstRT: "Show All Books",
       secondLT: "Top Rated",
-      thirdLT : "Genres",
-      thirdRT : "Show All Genres"
+      thirdLT: "Genres",
+      thirdRT: "Show All Genres"
     };
-  },
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
