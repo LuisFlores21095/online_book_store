@@ -1,24 +1,25 @@
 <template>
-  <v-card class="ma-4" height="590" width="283">
+  <v-card @click="hello" class="ma-4" height="500" width="283">
+   
+    <!-- original 590 height -->
     <div class="book_div_image">
-      <img class="book_image" alt="logo" src="./../../assets/ex.jpg" />
+      <img class="book_image" :src="getLink(this.book.b_ISBN)" />
       <v-card-title class="justify-center">
         <!-- <v-chip :color="colorFunc(this.book.bt_Name)" label>
             {{ this.book.bt_Name }}
           </v-chip> -->
       </v-card-title>
     </div>
-    <v-card-title>The Thing</v-card-title>
-    <v-card-subtitle class="py-0">by R.L Stine</v-card-subtitle>
+    <v-card-title>{{this.book.b_name}}</v-card-title>
+    <v-card-subtitle class="py-0">by {{ this.book.a_Name }}</v-card-subtitle>
     <div class="book_contain">
       <v-card-text
         ><div>
-          This book is about a kid that did something and i am just talking to
-          talk weeeeeeeeee dang i need even more text to test this component
+          {{this.book.b_description}}
         </div>
       </v-card-text>
     </div>
-    <v-card-title class="display_price py-1">Price: $3.99</v-card-title>
+    <!-- <v-card-title class="display_price py-1">Price: $3.99</v-card-title>
     <div class="book_button_div">
       <v-row>
         <v-col class="d-flex" cols="12" sm="5" xsm="12">
@@ -40,12 +41,20 @@
           </v-btn>
         </v-col>
       </v-row>
-    </div>
+    </div> -->
   </v-card>
+  
 </template>
 <script>
 export default {
-  name: "Book"
+    props: ["book"],
+  name: "Book",
+  methods: {
+    getLink(val) {
+      let temp = "http://covers.openlibrary.org/b/isbn/" + val + "-L.jpg";
+      return temp;
+    }
+  }
 };
 </script>
 

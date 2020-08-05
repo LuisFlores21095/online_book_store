@@ -1,7 +1,7 @@
 <template>
   <v-card class="ma-4" height="320" width="283">
     <div class="Genre_div_image">
-      <img class="Genre_image" alt="logo" src="./../../assets/ex.jpg" />
+      <img class="Genre_image" alt="logo" :src=genre.imgLink />
       <v-card-title class="justify-center">
         <!-- <v-chip :color="colorFunc(this.book.bt_Name)" label>
             {{ this.book.bt_Name }}
@@ -9,12 +9,13 @@
       </v-card-title>
     </div>
     <v-card-title id="HGI_Title" class="justify-center mb-2"
-      >Horror</v-card-title
+      >{{genre.genre}}</v-card-title
     >
   </v-card>
 </template>
 <script>
 export default {
+  props: ["genre"],
   name: "Genre"
 };
 </script>

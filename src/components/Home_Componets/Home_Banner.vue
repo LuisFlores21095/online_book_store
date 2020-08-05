@@ -1,7 +1,7 @@
 <template>
   <div id="Home_Banner">
     <img id="vueStoreImg" alt="logo" src="./../../assets/VUE_Store.png" />
-    <h3>Vue Book Store</h3>
+    <h3>Vue Book Store </h3>
     <p>
       Created using Vue.js, Vuetify, Node.js (Only a mock store, and can't be
       used to buy actual items)
@@ -25,11 +25,11 @@ export default {
     text-align: center;
     padding-top: 4px;
     color: #41b883;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   p {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 

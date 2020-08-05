@@ -2,9 +2,12 @@
   <v-card class="Home_BD" elevation="1">
     <v-sheet class=" bgGrey">
       <v-slide-group class="pa-4" show-arrows>
-        <v-slide-item v-for="n in 15" :key="n">
-          <Book />
-        </v-slide-item>
+     
+          <Book 
+          v-for="(book, index) in books"
+        :key="index"
+        :book="book"/>
+      
       </v-slide-group>
     </v-sheet>
   </v-card>
@@ -14,6 +17,7 @@
 import Book from "@/components/Book_Items/Book.vue";
 
 export default {
+    props: ["books"],
   name: "Home_Book_Display",
   components: {
     Book
